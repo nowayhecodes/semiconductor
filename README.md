@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/nowayhecodes/semiconductor/branch/main/graph/badge.svg?token=TEMqv3Ery0)](https://codecov.io/gh/nowayhecodes/semiconductor)
+
 # Semiconductor
 
 Multiple dispatch pattern library written with TypeScript.
