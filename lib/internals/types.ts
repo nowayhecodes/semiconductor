@@ -1,3 +1,5 @@
+type Class<T> = new (...args: any[]) => T;
+
 export interface DispatchOpts<TDispatch> {
   name: string;
   params: Array<{
@@ -23,3 +25,54 @@ export interface DispatchHandler<TReturn, TDispatch> {
 }
 
 export type Dispatch = (...args: any[]) => any;
+export type MethodEntry = [any, any];
+export type MethodEntries = MethodEntry[];
+export type DefaultMethod = ((arg0: any, arg1?: any) => any) | null;
+
+export type ValueCaseEntry = {
+  type: "value";
+  value: any;
+};
+
+export type ConstructorCaseEntry = {
+  type: "constructor";
+  value: new (...args: any[]) => Class<any>;
+};
+
+export type FunctionCaseEntry = {
+  type: "function";
+  value: (...args: any[]) => boolean;
+};
+
+export type MixedCaseEntry = {
+  type: "mixed";
+  values: Array<ConstructorCaseEntry | ValueCaseEntry>;
+};
+
+export type CaseEntry =
+  | ValueCaseEntry
+  | ConstructorCaseEntry
+  | FunctionCaseEntry
+  | MixedCaseEntry;
+
+export type Internals = {
+  methodEntries: MethodEntries;
+  defaultMethod: DefaultMethod;
+  dispatch: Dispatch;
+};
+
+export type Multiple = {
+  [multimethodKey]: Internals;
+};
+
+export type Multimethod = ((...args: any[]) => any) & Multiple;
+
+export type MethodFun = (
+  arg0: any,
+  arg1?: any
+) => (multiMethod: Multimethod) => Multimethod;
+
+export type MultiFun = (
+  arg0?: Dispatch | MethodFun,
+  ...method: MethodFun[]
+) => Multimethod;
