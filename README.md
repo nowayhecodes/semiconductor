@@ -1,4 +1,11 @@
 [![codecov](https://codecov.io/gh/nowayhecodes/semiconductor/branch/main/graph/badge.svg?token=TEMqv3Ery0)](https://codecov.io/gh/nowayhecodes/semiconductor)
+![languages](https://img.shields.io/github/languages/count/nowayhecodes/semiconductor)
+![top-language](https://img.shields.io/github/languages/top/nowayhecodes/semiconductor)
+![code-size](https://img.shields.io/github/languages/code-size/nowayhecodes/semiconductor)
+![npm-downloads](https://img.shields.io/npm/dw/semiconductor)
+![license](https://img.shields.io/github/license/nowayhecodes/semiconductor)
+![release](https://img.shields.io/github/v/release/nowayhecodes/semiconductor)
+![types](https://img.shields.io/npm/types/semiconductor)
 
 # Semiconductor
 
