@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "husky install",
     "build": "tsc -p tsconfig.json",
-    "test": "jest --coverage --runInBand --detectOpenHandles --forceExit",
+    "test": "jest --coverage --runInBand --detectOpenHandles --forceExit && codecov -F multimethod",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
@@ -21,8 +21,17 @@
     "type": "git",
     "url": "git+https://github.com/nowayhecodes/semiconductor.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "multiple dispatch",
+    "multimethod",
+    "fp",
+    "functional",
+    "immutable",
+    "dynamic dispatch",
+    "ts",
+    "typescript"
+  ],
+  "author": "Gustavo Cavalcante",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nowayhecodes/semiconductor/issues"
@@ -38,6 +47,9 @@
     "standard-version": "^9.3.1",
     "ts-jest": "^27.0.4",
     "ts-node": "^10.1.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "benchmark": "^2.1.4",
+    "benny": "^3.6.15",
+    "codecov": "^3.8.3"
   }
 }
