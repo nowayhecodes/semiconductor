@@ -1,0 +1,43 @@
+{
+  "name": "semiconductor",
+  "version": "1.0.0",
+  "description": "Multiple dispatch pattern library written with TypeScript",
+  "main": "index.js",
+  "typings": "./lib/index.d.ts",
+  "scripts": {
+    "prepare": "husky install",
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --coverage --runInBand --detectOpenHandles --forceExit",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major",
+    "pretty": "prettier --write ./lib/**/*"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown ./lib/**/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nowayhecodes/semiconductor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nowayhecodes/semiconductor/issues"
+  },
+  "homepage": "https://github.com/nowayhecodes/semiconductor#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.3",
+    "husky": "^6.0.0",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.1.1",
+    "prettier": "^2.3.2",
+    "standard-version": "^9.3.1",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
+}
