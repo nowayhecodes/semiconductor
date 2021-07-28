@@ -25,25 +25,35 @@ export const NotAMultiMethodError = ExtendedErrorClass(
   "Argument is not a multimethod."
 );
 
-export const AmbiguousError = ExtendedErrorClass(
-  "AmbiguousError",
-  "Ambiguous declaration."
-);
+export const AmbiguousError = (message: string) =>
+  ExtendedErrorClass("AmbiguousError", message);
 
 export const NoMatchError = ExtendedErrorClass(
   "NoMatchError",
   "This declaration has no match."
 );
 
-export const InvalidOverride = ExtendedErrorClass(
+export const InvalidOverrideError = ExtendedErrorClass(
   "InvalidOverride",
   "This override is invalid."
 );
 
-export const InvalidTypeCount = ExtendedErrorClass(
+export const InvalidTypeCountError = ExtendedErrorClass(
   "InvalidTypeCount",
   "The types here are invalid."
 );
+
+export const SpecificMatchNotFoundError = (types: string[]) =>
+  ExtendedErrorClass(
+    "SpecificMatchNotFoundError",
+    `Specific match not found for ${types}`
+  );
+
+export const MultipleMatchesFoundError = (types: string[]) =>
+  ExtendedErrorClass(
+    "MultipleMatchesFoundError",
+    `Multiple matches found for types ${types}`
+  );
 
 export type ExtendedErrorUnion =
   | typeof NoMethodError
@@ -53,5 +63,7 @@ export type ExtendedErrorUnion =
   | typeof NotAMultiMethodError
   | typeof AmbiguousError
   | typeof NoMatchError
-  | typeof InvalidOverride
-  | typeof InvalidTypeCount;
+  | typeof InvalidOverrideError
+  | typeof InvalidTypeCountError
+  | typeof SpecificMatchNotFoundError
+  | typeof MultipleMatchesFoundError;
