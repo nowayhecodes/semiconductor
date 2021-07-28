@@ -1,18 +1,19 @@
 import { DispatchHandler, DispatchOpts } from "./internals/types";
 import * as Error from "./internals/error/errors";
-import { resourceLimits } from "worker_threads";
+
+type TFindMatch<R, D> = DispatchHandler<R, D> | R | null;
 
 export const findMatch = <TReturn, TDispatch>(
   types: TDispatch[],
   dispatchers: DispatchHandler<TReturn, TDispatch>[],
   options: DispatchOpts<TDispatch>,
   throwOverride?: boolean
-) => {
+): TFindMatch<TReturn, TDispatch> => {
   const willThrowOverride = (throwOverride ??= options.throw);
 
   if (!options.ignoreArity && types.length !== options.params.length) {
     if (options.throw) {
-      Error.InvalidTypeCount;
+      Error.InvalidTypeCountError;
     }
     return null;
   }
@@ -48,4 +49,22 @@ export const findMatch = <TReturn, TDispatch>(
     }
     return null;
   }
+
+  if (max !== types.length) {
+    if (willThrowOverride) {
+      Error.SpecificMatchNotFoundError([types.toString()]);
+    }
+
+    return null;
+  }
+
+  if (maxMatches.length > 1) {
+    if (willThrowOverride) {
+      Error.MultipleMatchesFoundError([types.toString()]);
+    }
+
+    return null;
+  }
+
+  return maxMatches[0].dispatcher.handler(...types);
 };
