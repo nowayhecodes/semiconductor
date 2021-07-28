@@ -24,3 +24,34 @@ export const NotAMultiMethodError = ExtendedErrorClass(
   "NotAMultiDispatchError",
   "Argument is not a multimethod."
 );
+
+export const AmbiguousError = ExtendedErrorClass(
+  "AmbiguousError",
+  "Ambiguous declaration."
+);
+
+export const NoMatchError = ExtendedErrorClass(
+  "NoMatchError",
+  "This declaration has no match."
+);
+
+export const InvalidOverride = ExtendedErrorClass(
+  "InvalidOverride",
+  "This override is invalid."
+);
+
+export const InvalidTypeCount = ExtendedErrorClass(
+  "InvalidTypeCount",
+  "The types here are invalid."
+);
+
+export type ExtendedErrorUnion =
+  | typeof NoMethodError
+  | typeof NoArgumentsError
+  | typeof FirstArgumentError
+  | typeof NotAMethodError
+  | typeof NotAMultiMethodError
+  | typeof AmbiguousError
+  | typeof NoMatchError
+  | typeof InvalidOverride
+  | typeof InvalidTypeCount;
